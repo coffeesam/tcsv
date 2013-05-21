@@ -5,9 +5,8 @@ def quote(text)
   "\"#{text}\""
 end
 
-files = ARGV
-
-files.each do |file|
+ARGV.each do |file|
+  next unless File.exists?(file)
   in_file   = File.open(file, "r:windows-1251:utf-8")
   base_path = File.join(File.dirname(file), File.basename(file, '.txt'))
   out_file  = File.open("#{base_path}.csv", "w:windows-1251:utf-8")
